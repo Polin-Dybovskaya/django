@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddLab</title>
+    {% extends 'base_navbar.html' %}
+    {% load crispy_forms_tags %}
+    {% load django_bootstrap5 %}
+</head>
+<body>
+{% block content%}
+<form method="post">
+    {% csrf_token %}
+        {{form|crispy}}
+    <button type="submit" class="btn btn-light"> Edit</button>
+</form>
+{% endblock %}
+</body>
+</html>

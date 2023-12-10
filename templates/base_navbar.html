@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show_info.css' %}">
+</head>
+<header>
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar_color" navbar="align:center" >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Bzzzzz</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="d-flex flex-row-reverse " id="navbarNav">
+              <form class ="d-flex marg1">
+                <a href= "{% url 'logout' %}"  class="btn btn-light color_grey" type="submit">Log out</a>
+              </form>
+            <form class ="d-flex marg1">
+                <a href= "{% url 'home' %}"  class="btn btn-light " type="button">Home</a>
+              </form>
+          </div>
+        </div>
+      </nav>
+
+</header>
+<body>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab Information</title>
+    {% extends 'base_navbar.html' %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show_info.css' %}">
+</head>
+<body>
+{% block content %}
+{% if extra_lessons %}
+<div class="student-profile py-4">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>EXTRA CLASSES Information</h3>
+                    </div>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Название</th>
+                                <th width="30%">Преподаватели</th>
+                                <th width="30%">Студенты</th>
+                            </tr>
+                            {% for lesson in extra_lessons %}
+                            <tr>
+                                <td>{{lesson.name}}</td>
+                                <td>{% for tutor in lesson.tutor.all %}
+                                    <p>{{ tutor }}<p>
+                                        {% if not forloop.last %}
+                                    {% endif %}{% endfor %}</td>
+                                <td>{% for student in lesson.student.all %}
+                                    <p>{{ student }}, {{student.group}}<p>
+                                        {% if not forloop.last %}
+                                    {% endif %}{% endfor %} </td>
+                            {% empty %}
+                            <p>No classes found.</p>
+                        {% endfor %}
+                            </tr>
+
+                            <tr>
+                        </table>
+                    {% else %}
+        <div>
+            <p >Списка любимых книг пока нет</p>
+        </div>
+    {% endif %}
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

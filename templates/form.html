@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddLab</title>
+    {% extends 'base_navbar.html' %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show_info.css' %}">
+</head>
+<body>
+{% block content%}
+<div class="student-profile py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Complete Information</h3>
+                    </div>
+                    <div class="card-body pt-0">
+
+                        <form method="post">
+                            {%csrf_token%}
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Position</th>
+                                <td>{{form}}</td>
+                            </tr>
+
+                        <table>
+                            <button type="submit" class="btn btn-light"> Add</button>
+                            </form>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+.navbar_color{
+    outline-color: #cccccc;
+    outline-style: solid;
+    outline-width: 2px;
+
+}
+.marg1{
+margin: 0 5px;}
+
+.color_grey{
+background:#cccccc
+}
+
+.color_light_grey{
+background:#ffffff}

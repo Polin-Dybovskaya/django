@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information</title>
+    {% extends 'base_navbar.html' %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show_info.css' %}">
+</head>
+<body>
+{% block content %}
+<div class="student-profile py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent text-center">
+                        {% with id=student.id|stringformat:"i" %}
+                            <img class="profile_img"
+                             src="{% static 'images/students/'|add:id|add:'.png' %}"
+                             alt="">
+                        {% endwith %}
+                        <h3>{{student.first_name}} {{student.last_name}}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-0"><strong class="pr-1">Student ID:</strong> {{student.id}}</p>
+                        <p class="mb-0"><strong class="pr-1">Student User_Id:</strong> {{student.id_user}}</p>
+                        <p class="mb-0"><strong class="pr-1">Group :</strong> {{student.group}}</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-transparent border-0">
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Дата рождения</th>
+                                <td width="2%">:</td>
+                                <td>{{student.date_birth}}</td>
+                            </tr>
+                            <tr>
+                        </table>
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Education Information</h3>
+                    </div>
+                    <div class="card-body pt-0">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="30%">Факультатив </th>
+
+                                {% for l in extra_lessons %}
+                            <tr>
+                                <td><a href= "{% url 'extra_classes' student.id %}"  class="u" type="button">{{l.name}}</a></td>
+                            </tr>
+                            {% endfor %}
+
+                            </tr>
+                            <tr>
+                        </table>
+                        <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Lab Information</h3>
+                        <div class="card-header bg-transparent border-0">
+
+                            </div>
+
+                        <table class="table table-bordered">
+                            <tr>
+                                <th width="20%">Название лабораторной</th>
+                                <th width="30%">Преподаватель</th>
+                                <th width="15%">Оценка</th>
+                            </tr>
+                            {% for lab in labs %}
+                            <tr>
+                                <td>{{lab.name}}</td>
+                                <td>{{lab.tutor}}</td>
+                                <td>{{lab.mark}}</td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    {% extends 'base_navbar.html' %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/show_info.css' %}">
+
+</head>
+
+<body>
+{% block content %}
+
+<h1 class="mb-0"><i class="far fa-clone pr-1"></i>ERROR</h1>
+<p> неверный логин или пароль</p>
+<p> или вашего уровня доступа не достаточно</p>
+{% endblock %}
+</body>
+</html>
